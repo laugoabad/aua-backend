@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+
 
 Vue.use(VueRouter)
 
@@ -8,20 +8,51 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: () => import('../views/Home.vue')
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    path: '/nosotros',
+    name: 'Nosotros',
+    component: () => import('../views/Nosotros.vue')
+  },
+    {
+      path: '/tienda',
+      name: 'Tienda',
+      component: () => import('../views/Tienda.vue')
+    },
+    {
+      path: '/contacto',
+      name: 'Contacto',
+      component: () => import('../views/Contacto.vue')
+    },
+    {
+      path: '/pago',
+      name: 'Pago',
+      component: () => import('../views/Pago.vue')
+    },
+    {
+      path: '/admin',
+      name: 'Admin',
+      component: () => import('../views/Admin.vue')
+    },
+    {
+      path: '/thanks',
+      name: 'success',
+      component: () => import('../components/SubmissionSuccessful.vue')
+    },
+    {
+      path: '/404',
+      name: 'fail',
+      component: () => import('../components/SubmissionFail.vue')
+    },
 ]
 
 const router = new VueRouter({
+  mode: 'history',
+  base: process.env.BASE_URL,
   routes
+ 
 })
+
 
 export default router
